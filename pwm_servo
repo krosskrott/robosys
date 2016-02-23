@@ -1,0 +1,31 @@
+import RPi.GPIO as GPIO
+import time
+import sys
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(12, GPIO.OUT)
+servo = GPIO.PWM(12, 50)
+
+# 初期化
+servo.start(0.0)
+
+。
+dc = 0.0
+while True:
+   servo.ChangeDutyCycle(8)
+   time.sleep(0.5)
+   servo.ChangeDutyCycle(7)  
+   time.sleep(0.5)
+import wiringpi2 as wiringpi
+ 
+wiringpi.wiringPiSetupGpio()
+wiringpi.pinMode(18,wiringpi.GPIO.PWM_OUTPUT)
+wiringpi.pwmSetMode(0)
+wiringpi.pwmSetClock(400)
+wiringpi.pwmWrite(18, 0)
+ 
+SERVO = 18
+def setpwm(value):
+ num = int(value)
+ wiringpi.pwmWrite(SERVO, num)
